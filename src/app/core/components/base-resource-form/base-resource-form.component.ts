@@ -1,18 +1,13 @@
 import { BaseResourceService } from 'src/app/shared/services/base-resource.service';
 import { BaseResourceModel } from 'src/app/shared/models/base-resource.model';
-import { Component, OnInit, AfterContentChecked, Injector } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { OnInit, AfterContentChecked, Injector } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { switchMap } from 'rxjs/operators';
 
 import toastr from 'toastr';
 
-@Component({
-  selector: 'app-category-form',
-  templateUrl: './category-form.component.html',
-  styleUrls: ['./category-form.component.css']
-})
 export abstract class BaseResourceFormComponent<T extends BaseResourceModel> implements OnInit, AfterContentChecked {
 
   currentAction: string;
@@ -104,7 +99,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
   protected updateResource() {
     const resourceData: T = this.jsonDataToResourceFn(this.resourceForm.value);
-    this.resourceService.create(resourceData)
+    this.resourceService.update(resourceData)
       .subscribe(
         resource => this.actionsForSuccess(resource),
         error => this.actionsForError(error)
