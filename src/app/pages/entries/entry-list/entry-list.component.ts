@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { BaseResourceListComponent } from 'src/app/core/components/base-resource-list/base-resource-list.component';
+import { BaseResourceListComponent } from 'src/app/shared/components/base-resource-list/base-resource-list.component';
 
 import { Entry } from './../shared/entry.model';
 import { EntryService } from './../shared/entry.service';
